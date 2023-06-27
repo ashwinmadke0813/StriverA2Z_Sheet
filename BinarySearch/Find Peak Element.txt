@@ -1,0 +1,59 @@
+//https://leetcode.com/problems/find-peak-element/
+
+Approach-1
+
+Linear Search -  we will travers each element and will check whether element is greater than from its previous or next.
+
+class Solution {
+    public int findPeakElement(int[] nums) {
+        int n = nums.length;
+        for(int i=0; i<n;i++)
+        {
+		//If i is the first index (i == 0) or the element at the previous index (nums[i-1]) is less than the current element (nums[i]).
+		//If i is the last index (i == n-1) or the element at the next index (nums[i+1]) is less than the current element (nums[i]).
+            if((i==0 || nums[i-1]<nums[i]) &&
+              ((i==n-1) || nums[i]> nums[i+1]))
+            {
+                return i;
+            }
+        }
+        return -1;
+        
+    }
+}
+//TC - O(n)
+//SC - O(1)
+
+
+Approach-2
+
+Binary search - 
+
+class Solution {
+    public int findPeakElement(int[] nums) {
+       int low = 0;
+        int hi = nums.length-1;
+
+        while(low < hi)
+        {
+            int mid = low + (hi-low)/2;
+
+            if(nums[mid] > nums[mid+1]){
+                //peak ele lies in left half of array
+                hi = mid;
+            }
+            else {
+                //peak ele lies in right half of array
+                low = mid+1;
+            }
+        }
+        // return the peak element
+        return low;
+        
+    }
+}
+
+//TC - O(logn)
+//SC - O(1)
+
+
