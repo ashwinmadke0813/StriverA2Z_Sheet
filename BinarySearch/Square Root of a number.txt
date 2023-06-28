@@ -1,0 +1,53 @@
+//https://www.codingninjas.com/studio/problems/square-root-integral_893351?leftPanelTab=1&utm_medium=affiliate&utm_campaign=codestudio_Striver_BinarySeries
+//https://practice.geeksforgeeks.org/problems/square-root/0?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=square-root
+
+Approach -1 : Linear search
+
+public class Solution {
+
+	public static int sqrtN(long n) {
+		int ans = 1;
+
+		for(int i=1; i <=n; i++)
+		{
+			if(i*i <=n)
+			{
+				ans = i;
+			}
+			else
+			break;
+		}
+		return ans;
+	}
+}
+
+//TC - O(sqrt(n)) 
+//sc - O(1)
+
+Approach -2 : Using binary search
+
+public class Solution {
+
+	public static int sqrtN(long n) {
+		long low=0;
+		long hi = n;
+
+		while(low <= hi)
+		{
+			long mid = low + (hi-low)/2;
+
+			long  ans = (mid*mid);//square
+			//if square is less than the given no , move towards right else left
+			if(ans <= n)
+			{
+				low = mid+1;
+			}
+			else{
+				hi = mid-1;
+			}
+		}
+		return (int)hi;
+	}
+} 
+//TC-O(logn)
+//SC-O(1)
