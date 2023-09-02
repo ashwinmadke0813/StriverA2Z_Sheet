@@ -1,0 +1,34 @@
+// https://www.codingninjas.com/studio/problems/bubble-sort_980524
+
+public class Solution {
+
+    public static void bubbleSort(int[] arr, int n) {
+        // Write your code here.
+        // outer loop is for passes through the array
+        for (int i = 0; i < n - 1; i++) {
+            // will check if any swap is done in the pass
+            boolean flag = false;
+
+            // Inner loop for comparisons and swaps.
+            // loop iterates through the unsorted part of the array.
+            for (int j = 0; j < n - 1 - i; j++) {
+                // if curr ele is greater than next , then swap
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    flag = true; // swap is done
+                }
+            }
+            // If no swaps were made in this pass, the array is already sorted.
+            // In this case, we can break out of the outer loop early.
+            if (flag == false)
+                break;
+        }
+
+    }
+}
+// TC - O(n) in best case
+// TC - O(n^2) in worst & average case
+// SC - O(1)
+	
