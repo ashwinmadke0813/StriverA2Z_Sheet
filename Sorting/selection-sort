@@ -1,0 +1,35 @@
+// https://www.codingninjas.com/studio/problems/selection-sort_981162?leftPanelTab=1
+
+public class Solution {
+
+    public static void selectionSort(int arr[], int n) {
+        // Write your code here.
+
+        n = arr.length;
+        // Iterating through each element of the array from the first element to the
+        // second-to-last element
+        for (int i = 0; i < n - 1; i++) {
+
+            // Initialize min to the current index i
+            int min = i;
+            // loop will iterate through the unsorted portion of the array
+            for (int j = i + 1; j < n; j++) {
+                // If the element at index j is less than the element at index min, update min
+                // to j
+                if (arr[j] < arr[min]) {
+                    min = j;
+                }
+
+            }
+            // If min is not equal to i, it means a smaller element was found, so swap the
+            // elements at i and min
+            if (min != i) {
+                int temp = arr[min];
+                arr[min] = arr[i];
+                arr[i] = temp;
+            }
+        }
+    }
+}
+// TC - O(n^2) - in best,average & worst case
+// SC - O(1
