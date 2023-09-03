@@ -1,0 +1,33 @@
+//https://www.codingninjas.com/studio/problems/insertion-sort_3155179
+
+public class Solution {
+
+	public static void insertionSort(int n , int[] arr) {
+		// Write your code here.
+
+		for(int i=1; i < n; i++){
+			
+			// Store the curr ele at index 'i' in temp
+			int temp = arr[i];
+			
+			// j is one position before i
+			int j = i-1;
+
+			while( j >= 0 && arr[j] > temp){
+			
+				// Shift the element at 'arr[j]' one position to the right (making space for 'temp').
+				arr[j+1] = arr[j];
+				
+				// Decrement 'j' to compare 'temp' with the previous element in the next iteration.
+				j--;
+			}
+			
+			arr[j+1] = temp;
+			// Place 'temp' in its correct sorted position in the array.
+			// 'j + 1' is the position where 'temp' should go since 'j' is decremented in the loop.
+		}
+	}
+}
+
+//TC - O(n) best case, O(n^2) worst & average case
+//SC - O(1)
